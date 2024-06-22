@@ -1,4 +1,8 @@
+const express = require('express');
 const puppeteer = require('puppeteer');
+
+const app = express();
+const PORT = process.env.PORT || 10000;
 
 async function resolveFlipkartUrl(shortenedUrl) {
     const browser = await puppeteer.launch({
@@ -17,12 +21,21 @@ async function resolveFlipkartUrl(shortenedUrl) {
     return finalUrl;
 }
 
-// Example usage
-const shortenedUrl = 'https://dl.flipkart.com/s/aRC8FluuuN';
-resolveFlipkartUrl(shortenedUrl)
-    .then(finalUrl => {
-        console.log('Resolved URL:', finalUrl);
-    })
-    .catch(error => {
+app.get('/resolveShortenedUrl', async (req, res) => {
+    try {
+        const { url } = req.query;
+        if (!url) {
+            return res.status(400).json({ error: 'URL parameter is required' });
+        }
+
+        const finalUrl = await resolveFlipkartUrl(url);
+        res.json({ finalUrl });
+    } catch (error) {
         console.error('Error resolving URL:', error);
-    });
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
