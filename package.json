@@ -1,0 +1,14 @@
+{
+  "name": "earnstayserver",
+  "version": "1.0.0",
+  "description": "Your server application description",
+  "main": "test.js",
+  "scripts": {
+    "start": "node test.js"
+  },
+  "dependencies": {
+    "axios": ">=0.21.1",
+    "puppeteer": "^22.11.0"
+    
+  }
+}
