@@ -1,15 +1,12 @@
 {
-  "name": "earnstayserver",
+  "name": "puppeteer-server",
   "version": "1.0.0",
-  "description": "Your server application description",
   "main": "test.js",
   "scripts": {
     "start": "node test.js"
   },
   "dependencies": {
-    "axios": ">=0.21.1",
-    "express": ">=4.19.2",
-    "puppeteer": "^22.11.0"
-    
+    "express": "^4.17.1",
+    "puppeteer": "^10.0.0"
   }
 }
