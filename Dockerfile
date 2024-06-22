@@ -32,4 +32,4 @@ ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/google-chrome-stable
 EXPOSE 10000
 
 # Run the app
-CMD [ "node", "your-script.js" ]
+CMD [ "node", "index.js" ]
